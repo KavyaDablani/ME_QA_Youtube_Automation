@@ -1,6 +1,8 @@
 package demo;
 
 import java.util.List;
+
+import org.bouncycastle.oer.its.ieee1609dot2.basetypes.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,10 +18,6 @@ public class WrapperMethods {
     public WrapperMethods(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-    }
-
-    public void navigateTo(String url) {
-        driver.get(url);
     }
 
     public void clickElement(By by) {
@@ -54,7 +52,5 @@ public class WrapperMethods {
     public List<WebElement> findElements(By by) {
         return driver.findElements(by);
     }
+  
 }
-
-
-

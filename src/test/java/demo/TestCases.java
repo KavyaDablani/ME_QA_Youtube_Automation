@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -164,7 +165,7 @@ public class TestCases {
             seleniumWrapper.scrollBy(0, 400);
             seleniumWrapper.sleep(6000);
 
-            // Find and print the title of the Latest News Posts section
+     
             List<WebElement> title_Latest = seleniumWrapper.findElements(By.xpath("//*[@id=\"author-text\"]/span"));
             for (int i = 0; i < 3; i++) {
                 WebElement title = title_Latest.get(i);
@@ -173,7 +174,7 @@ public class TestCases {
                 System.out.println("Name of the " + (i + 1) + " News: " + name);
             }
             Thread.sleep(3000);
-            // Get the first 3 news post contents
+           
             List<WebElement> body_Contents = seleniumWrapper.findElements(
                     By.xpath("//div[@id='content']//ytd-post-renderer//following-sibling::div//*[@id='body']/div[1]"));
             for (int i = 0; i < 3; i++) {
@@ -182,14 +183,14 @@ public class TestCases {
                 System.out.println("Content of the " + (i + 1) + " News: " + content);
             }
             Thread.sleep(6000);
-            // Get the first 3 news post likes
+
             int totalLikes = 0;
             List<WebElement> likes_Total = seleniumWrapper.findElements(By.xpath("//span[@id='vote-count-middle']"));
             for (int i = 0; i < Math.min(likes_Total.size(), 3); i++) {
                 WebElement totalLikesElement = likes_Total.get(i);
                 String likesText = totalLikesElement.getText();
 
-                // Exclude cases where like count is explicitly mentioned as 0
+   
                 if (!likesText.equals("0")) {
                     // Convert likesText to a numeric value
                     int likesCount = 0;
@@ -205,7 +206,7 @@ public class TestCases {
                 }
             }
 
-            // Print the total likes after processing all likes
+       
             System.out.println("Total Likes on the first 3 News Posts: " + totalLikes);
             System.out.println("End Test case: News tab contents printed successfully");
 
@@ -215,22 +216,8 @@ public class TestCases {
         }
     }
 
-    @Test(priority = 4, enabled = true)
-    public void testCase_05() {
-        try {
-            System.out.println("Start Test case:  Go to YouTube.com, read and print excel data.");
-            driver.get("https://www.youtube.com/");
-            seleniumWrapper.sleep(4000);
-
-
-
-            System.out.println("End Test case: Excel Data Printed Successfully.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            Assert.fail("Test case failed due to exception: " + e.getMessage());
-        }
-    }
-    
+   
+   
 
     @AfterSuite(alwaysRun = true)
     public void endTest() {
